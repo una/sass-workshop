@@ -2,7 +2,7 @@
 
 So you’ve heard of Sass. In fact, you're probably using it. You write variables and use predefined mixins like a pro. But are you using Sass to its full potential?
 
-This workshop will explore advanced Sass functionality. We’ll talk about the fundamental differences in lists, maps, extends, and mixins, and will dive deep into writing custom mixins. We’ll discuss partials and how to further DRY out our Sass by leveraging available functions, then writing our own custom functions while documenting the process and architecting a fluid system.
+This workshop will explore advanced Sass functionality. We’ll talk about the fundamental differences in lists, maps, extends, and mixins, and will dive deep into writing custom mixins. We’ll discuss partials and how to further DRY out our Sass by leveraging available functions, then writing our own custom functions, documenting the process, and architecting a fluid system.
 
 ### Pre-requisites:
 
@@ -10,11 +10,17 @@ This workshop will explore advanced Sass functionality. We’ll talk about the f
   2. Optionally, for scss linting within the terminal, have [Ruby](https://www.ruby-lang.org/en/documentation/installation/) installed.
   3. Download [this](https://github.com/una/gulp-starter-env) starter environment.
 
+### Tools and Resources
+
+- [My Slideshow](http://una.github.io/sass-for-devs/#/)
+- [Sassmeister](http://sassmeister.com/)
+
 ### Gameplan
 
 The way this workshop will run is as follows:
 
 ### Overview
+  quick Sass review
   data structures (maps, lists)
   looping (@each, @for, through, to)
   The Almighty Ampersand
