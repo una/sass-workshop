@@ -12,45 +12,56 @@ This workshop will explore advanced Sass functionality. We’ll talk about the f
 
 ### Tools and Resources
 
-- [My Slideshow](http://una.github.io/sass-for-devs/#/)
+- [Slide Deck #1](http://una.github.io/sass-for-devs/#/)
+- [Or This Slide Deck?](http://una.github.io/slides-intro-to-sass)
 - [Sassmeister](http://sassmeister.com/)
+-
 
 ### Gameplan
 
 The way this workshop will run is as follows:
 
 ### Overview
-  quick Sass review
-  data structures (maps, lists)
-  looping (@each, @for, through, to)
-  The Almighty Ampersand
-    - nesting with the ampersand
-    - the trailing ampersand
-    - & + &
-  how extends really work
-    - differences between extends and mixins
+  - Quick Sass review
+  - Data structures (maps, lists)
+  - File Organization
 
-Mixin Deep Dive
-  mixins: & @include
-  mixins that take args
-  arglists
-  @content blocks
-  default arguments
-  Using null http://blog.teamtreehouse.com/smarter-sass-mixins-null
-    Challenge: Write a breakpoint mixin that reads from a map of breakpoints
+**The Almighty Ampersand**
 
-Functions
-  Overview of sass functions
-    - number functions
-    - string functions
-    - color functions (tips: mix > lighten or darken)
-  custom functions
-    - Bonus: SassDoc
-    - Bonus: @warn, @debug, @error
+  - Nesting with the ampersand
+  - naming with the ampersand
+  - The trailing ampersand
+  - The Double Ampersand
+  - *Challenge: Use the Ampersand in 3 different ways*
 
-Final Challenge: Building an on-the-fly Pattern Library
-  color map
-  map-get color function
-  separation of files
-  manifest file
-  html output to build blocks with pseudo elements based on color map
+**Mixin Deep Dive**
+
+  - Differences between extends and mixins
+  - Intro to mixin structure
+  - @include
+  - Mixin arguments
+  - Arglists
+  - Looping (@each, @for, through, to)
+  - @content blocks
+  - Default arguments
+  - Using [null](http://blog.teamtreehouse.com/smarter-sass-mixins-null)
+  - *Challenge: Write a breakpoint mixin that reads from a map of breakpoints*
+
+**Functions**
+
+  - Overview of available functions:
+  - Number functions
+  - String functions
+  - Color functions (tips: mix > lighten or darken)
+  - Writing custom functions
+  - Bonus: SassDoc
+  - Bonus: @warn, @debug, @error
+  - *Challenge: Write a custom function to ____*
+
+**Final Challenge: Building an on-the-fly Pattern Library**
+
+  - Color map
+  - map-get() color function
+  - Separation of files
+  - Manifest file
+  - Html output to build blocks with pseudo elements based on color map
