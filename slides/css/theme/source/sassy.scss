@@ -1,0 +1,178 @@
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900);
+
+// Sassy colors
+$hopbush: #c69;
+$midnight-blue: #036;
+$white: white;
+$iron: #dadbdf;
+$pale-sky: #6b717f;
+$patina: #699;
+$nebula: #d2e1dd;
+
+// Override theme settings (see ../template/settings.scss)
+
+$backgroundColor: $white;
+$linkColor: $patina;
+$mainFont: Source Sans Pro, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mainColor: $midnight-blue;
+$headingFont: $mainFont;
+$headingColor: $hopbush;
+$linkColorHover: lighten( $linkColor, 20% );
+$headingTextShadow: none;
+$heading1TextShadow: none;
+$selectionBackgroundColor: $hopbush;
+$headingTextTransform: none;
+
+%clearfix {
+  clear: both;
+    &:before,
+    &:after {
+        content: "" !important;
+        display: table !important;
+    }
+    &:after {
+        clear: both !important;
+    }
+}
+
+mark {
+  background-color: $pale-sky;
+  color: $iron;
+  padding: .05em .3em !important; /*overriding default*/
+}
+
+cite {
+  font-size: 60% !important;
+  margin-top: 1.2em !important;
+  float: right;
+  color: $pale-sky;
+  font-style: italic !important;
+}
+
+.abs-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.reveal {
+  h1 {
+    font-weight: 800;
+    margin-bottom: 1.4 !important;
+    text-transform: initial !important; /*overriding default*/
+  }
+
+  h2 {
+    font-size: 1.3em;
+    font-weight: 800;
+    clear: both;
+
+    &.syntax-label {
+      font-weight: 500;
+      font-size: .8em;
+      margin: 1em 0 -.5em 0;
+      line-height: 0;
+    }
+  }
+
+  blockquote {
+    box-shadow: none;
+    width: 80%;
+
+    footer {
+      text-align: right;
+      font-size: 80%;
+    }
+  }
+
+  p code {
+    color: $headingColor;
+    font-size: 90%;
+    font-family: monospace;
+  }
+
+  li {
+    margin-left: 1em;
+  }
+
+  dl {
+    font-size: .6em;
+    line-height: 1.4;
+
+    dt {
+      color: $headingColor;
+    }
+
+    dd {
+      margin-bottom: 1em;
+    }
+  }
+
+  section img {
+    box-shadow: none !important; /*overriding default*/
+    border: none !important; /*overriding default*/
+  }
+
+  .slides {
+    text-align: left;
+  }
+
+  .bottom-links {
+    top: 100%;
+    position: absolute;
+    left: 0;
+    display: block;
+
+    h2 {
+      font-size: .5em;
+      margin: 0 !important;
+      text-shadow: none;
+    }
+
+    li {
+      font-size: .5em;
+      line-height: 1.4;
+    }
+  }
+
+  pre {
+    box-shadow: none;
+    width: 100%;
+    border-radius: 3px;
+    font-family: inherit;
+
+    code {
+      padding: 1em;
+      margin: 0;
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.left {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 0 .5em !important;
+}
+
+.right {
+  box-sizing: border-box;
+  float: right;
+  width: 50%;
+  padding: 0 .5em !important;
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+

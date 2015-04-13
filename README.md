@@ -23,25 +23,36 @@ The way this workshop will run is as follows:
 
 ### Overview
   - Quick Sass review
-  - Data structures (maps, lists)
-  - File Organization
 
 **The Almighty Ampersand**
 
   - Nesting with the ampersand
-  - naming with the ampersand
+  - Naming with the ampersand
   - The trailing ampersand
   - The Double Ampersand
   - *Challenge: Use the Ampersand in 3 different ways*
 
+**Beyond Basics**
+
+  - @extend
+  - Placeholder Selectors
+  - @mixin
+  - @include
+
+**Control Directives**
+
+  - Lists
+  - List Functions
+  - Maps
+  - Map Functions
+  - @each loop
+  - @for loop
+  - @while loop
+
 **Mixin Deep Dive**
 
-  - Differences between extends and mixins
-  - Intro to mixin structure
-  - @include
   - Mixin arguments
   - Arglists
-  - Looping (@each, @for, through, to)
   - @content blocks
   - Default arguments
   - Using [null](http://blog.teamtreehouse.com/smarter-sass-mixins-null)
@@ -49,13 +60,11 @@ The way this workshop will run is as follows:
 
 **Functions**
 
-  - Overview of available functions:
-  - Number functions
-  - String functions
+  - Number functions <
+  - String functions <
   - Color functions (tips: mix > lighten or darken)
   - Writing custom functions
-  - Bonus: SassDoc
-  - Bonus: @warn, @debug, @error
+  - @warn, @debug, @error
   - *Challenge: Write a custom function to ____*
 
 **Final Challenge: Building an on-the-fly Pattern Library**
@@ -64,4 +73,9 @@ The way this workshop will run is as follows:
   - map-get() color function
   - Separation of files
   - Manifest file
+  - Bonus: SassDoc
   - Html output to build blocks with pseudo elements based on color map
+
+**Bonus: Getting Organized **
+  - File Organization
+  - Partials

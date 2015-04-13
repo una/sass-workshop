@@ -1,0 +1,1638 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Advanced Sass Workshop</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/sassy.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides">
+      <!-- About Me -->
+        <section class="abs-center text-center">
+          <h1>Advanced Sass Workshop</h1>
+          <br>
+          <h2>Hello, PEERS 2015 :)</h2>
+          <p>
+            <a href="http://unakravets.com">Una Kravets</a> / <a href="http://twitter.com/una">@una</a>
+          </p>
+          <br>
+        </section>
+
+        <section>
+          <section class="text-center">
+              <img src="img/ibm_watson.jpg" alt="IBM Watson Logo">
+          </section>
+
+          <section class="text-center">
+            <img style="max-width: 45%; margin: 0 5% 50px 0;" src="img/sassydc-logo.svg" alt="">
+            <img class="fragment" style="max-width: 45%" src="img/atxsass-logo.png" alt="">
+          </section>
+
+          <section class="text-center">
+            [design open logo]
+          </section>
+        </section>
+
+        <!-- What is Sass -->
+        <section>
+          <section class="abs-center">
+              <h1 class="text-center">Sass...!?</h1>
+              <h2 class="fragment">Sass:</h2>
+              <p class="fragment"><mark><q>Syntactically Awesome Style Sheets:</mark> Sass is the most mature, stable, and powerful professional grade CSS extension language in the world. </q><cite><a href="http://sass-lang.com">sass-lang.com</a></cite></p>
+          </section>
+
+          <section class="text-center">
+            <h1>Sass...!?</h1>
+            <p class="fragment">Sass is a CSS preprocessor.</p>
+            <img class="fragment" src="img/dude-thumbsup.gif" alt="">
+            <aside class="notes">
+              <li>Simply put -- Sass converts into CSS. Thats all. Sass solves a lot of problems that CSS has.</li>
+              <li>you only ever edit your sass files. don't touch the CSS</li>
+            </aside>
+          </section>
+
+          <section>
+            <h2>CSS</h2>
+            <hr>
+            <pre><code class="css">.navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
+  border-top-color: #ffffff;
+}
+.navbar .nav .active .caret {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.navbar .nav .open > .dropdown-toggle, .navbar .nav .active > .dropdown-toggle, .navbar .nav .open.active > .dropdown-toggle {
+  background-color: transparent;
+}
+.navbar .nav .active > .dropdown-toggle:hover {
+  color: #ffffff;
+}
+.navbar .nav.pull-right .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+.navbar .nav.pull-right .dropdown-menu:before {
+  left: auto;
+  right: 12px;
+}
+.navbar .nav.pull-right .dropdown-menu:after {
+  left: auto;
+  right: 13px;
+}
+.breadcrumb {
+  padding: 7px 14px;
+  margin: 0 0 18px;
+  background-color: #fbfbfb;
+  background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f5f5f5));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: linear-gradient(top, #ffffff, #f5f5f5);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+.breadcrumb li {
+  display: inline-block;
+  text-shadow: 0 1px 0 #ffffff;
+}
+.breadcrumb .divider {
+  padding: 0 5px;
+  color: #999999;
+}
+.breadcrumb .active a {
+  color: #333333;
+}
+.pagination {
+  height: 36px;
+  margin: 18px 0;
+}
+.pagination ul {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  margin-left: 0;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.pagination li {
+  display: inline;
+}
+.pagination a {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-left-width: 0;
+}
+.pagination a:hover, .pagination .active a {
+  background-color: #f5f5f5;
+}
+.pagination .active a {
+  color: #999999;
+  cursor: default;
+}
+.pagination .disabled a, .pagination .disabled a:hover {
+  color: #999999;
+  background-color: transparent;
+  cursor: default;
+}
+.pagination li:first-child a {
+  border-left-width: 1px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+.pagination li:last-child a {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+.pagination-centered {
+  text-align: center;
+}
+.pagination-right {
+  text-align: right;
+}
+.pager {
+  margin-left: 0;
+  margin-bottom: 18px;
+  list-style: none;
+  text-align: center;
+  *zoom: 1;
+}
+.pager:before, .pager:after {
+  display: table;
+  content: "";
+}
+.pager:after {
+  clear: both;
+}
+.pager li {
+  display: inline;
+}
+.pager a {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.pager a:hover {
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+.pager .next a {
+  float: right;
+}
+.pager .previous a {
+  float: left;
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <img src="img/sass-watch.gif" alt="">
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://www.1stwebdesigner.com/power-sass-why-use-css-preprocessors/">Getting Started with Sass</a></li>
+              <li><a href="http://alistapart.com/article/why-sass">Why Sass?</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h1>Ruby Sass</h1>
+              <ol>
+                <li class="fragment"><code>ruby</code></li>
+                <li class="fragment"><code>gem install sass</code></li>
+                <li class="fragment"><code>sass –watch input.scss:output.css</code></li>
+              </ol>
+            <hr class="fragment">
+            <h1 class="fragment">Node Sass</h1>
+            <ol>
+              <li class="fragment"><code>node</code></li>
+              <li class="fragment"><code>npm install node-sass</code></li>
+              <li class="fragment"><code>sass –watch input.scss:output.css</code></li>
+            </ol>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://www.1stwebdesigner.com/power-sass-why-use-css-preprocessors/">Getting Started with Sass</a></li>
+              <li><a href="http://alistapart.com/article/why-sass">Why Sass?</a></li>
+              <li><a href="https://scotch.io/tutorials/getting-started-with-sass"> Another Getting Started with Sass</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Basics -->
+        <section>
+          <section>
+            <h1>A Quick Intro to Sass</h1>
+            <hr>
+            <ul>
+              <li>Syntax</li>
+              <li>Variables</li>
+              <li>Variable Abstraction</li>
+              <li>Nesting</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Syntax</h2>
+            <hr>
+            <div class="left">
+            <h2 class="syntax-label">.sass</h2>
+            <pre>
+              <code class="scss">#sidebar
+  width: 30%
+  background-color: #faa</code>
+            </pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.scss</h2>
+            <pre>
+              <code class="scss">#sidebar {
+  width: 30%;
+  background-color: #faa;
+}</code>
+                        </pre>
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://robots.thoughtbot.com/sass-variables">scss vs. sass</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Variables</h2>
+            <hr>
+            <p>Placeholders for values used multiple times.</p>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2>
+            <pre>
+              <code class="scss">$open-sans-stack: 'Open Sans', Arial, Helvetica, sans-serif;
+$pink: #c69;
+
+body {
+  font-family: $open-sans-stack;
+}
+
+h2 {
+  color: $pink;
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+            <code class="css">body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+  color: #c69;
+}</code></pre>
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://robots.thoughtbot.com/sass-variables">Thoughtbot on Sass Variables</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Variable Abstraction</h2>
+            <hr>
+            <p>Variables should be abstracted into themes.</p>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2>
+            <pre>
+              <code class="scss">// variables.scss
+$open-sans-stack: 'Open Sans', Arial, Helvetica, sans-serif;
+$pink: #c69;
+
+// theme.scss
+$font--copy: $open-sans-stack;
+$header--color: $pink;
+
+
+// typography.scss
+body {
+  font-family: $open-sans-stack;
+}
+
+h2 {
+  color: $header--color;
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+            <code class="css">body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+  color: #c69;
+}</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <h2>Nesting</h2>
+            <hr>
+            <p>Nesting allows you to organize your code in relevant chunks</p>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2>
+            <pre>
+              <code class="scss">.sidebar {
+  float: left;
+
+  h2 {
+    font-size: 1.2em;
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.sidebar {
+  float: left;
+}
+.sidebar h2 {
+  font-size: 1.2em;
+}</code></pre>
+            </div>
+
+            <h2 style="margin-top:7em" class="fragment">A word on Nesting</h2>
+            <ul>
+              <li class="fragment">Never go more than 3 levels deep</li>
+              <li class="fragment">Nesting with an <code>&</code> is a-okay</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>When Nesting Goes Wrong</h2>
+            <hr>
+            <p>Do not do this.</p>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2>
+            <pre>
+              <code class="scss">body {
+  sidebar {
+    .news-section {
+      .description {
+        a {
+          color: #f00;
+        }
+      }
+    }
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">body sidebar .news-section .description a {
+  color: #f00;
+}
+</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <img style = "width: 60%; margin: auto; display: block;" src="img/judge-opencomp.gif" alt="judge open comp">
+          </section>
+
+          <section>
+            <h2>Yay Nesting!</h2>
+            <hr>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2>
+            <pre>
+              <code class="scss">$blue: #00f;
+
+.blue-link {
+  color: $blue;
+
+  &:hover,
+  &:focus {
+    color: mix($blue, white, 50%);
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.blue-link {
+  color: #00f;
+}
+.blue-link:hover, .blue-link:focus {
+  color: #7f7fff;
+}</code></pre>
+            </div>
+
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="https://bem.info/method/">BEM documentation</a></li>
+              <li><a href="https://smacss.com/">SMACSS documentation</a></li>
+              <li><a href="http://takazudo.github.io/presentation-oocss-sass/#/">Slides on Object Oriented Sass</a></li>
+            </ul>
+          </section>
+        </section>
+
+
+        <!-- Almighty Ampersand -->
+        <section>
+          <section>
+            <h1>The Almighty Ampersand</h1>
+            <hr>
+            <ul>
+              <li>Overview</li>
+              <li>Nesting with Ampersands</li>
+              <li>Naming Conventions</li>
+              <li>Trailing Ampersand</li>
+              <li>Double Ampersand</li>
+            </ul>
+          </section>
+
+          <section class="text-center abs-center">
+            <img src="img/ampersand.gif" height="570" width="790" alt="Ampersand gif">
+          </section>
+      </section>
+
+        <!-- Beyond Basics -->
+        <section>
+          <section>
+            <h1>Beyond Basics</h1>
+            <hr>
+            <ul>
+              <li>@extend</li>
+              <li>Placeholder Selectors</li>
+              <li>@mixin</li>
+              <li>@include</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>@extend (Selector Inheritance)</h2>
+            <hr>
+            <p>Extending will append the element to recieve the style block.</p>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">.kitten {
+  background-image: url("../img/kitten.png");
+}
+
+.kitten-with-hat {
+@extend .kitten;
+
+  &:after {
+    content: " ";
+    background-image: url("../img/hat.png");
+  }
+}</code></pre>
+        </div>
+
+        <div class="right">
+        <h2 class="syntax-label">.css output</h2>
+        <pre>
+          <code class="css">.kitten, .kitten-with-hat {
+  background-image: url("../img/kitten.png");
+}
+
+.kitten-with-hat:after {
+  content: " ";
+  background-image: url("../img/hat.png");
+}</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <div class="left">
+              <h2 class="syntax-label">.kitten</h2>
+              <br>
+              <img src="img/cat.jpg" height="493" width="360" alt="">
+            </div>
+            <div class="right fragment">
+            <h2 class="syntax-label">.kitten-with-hat</h2>
+            <br>
+              <img src="img/cat-with-hat.jpg" height="493" width="360" alt="">
+            </div>
+          </section>
+
+          <section>
+            <h2>Placeholder Selectors</h2>
+            <hr>
+            <p>Placeholders are "invisible" until extended</p>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">$pink: #c69;
+$blue: #00f;
+
+// I'm not real yet
+%link {
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.pink-link {
+  @extend %link; //extending
+  color: $pink;
+}
+
+.blue-link {
+  @extend %link; //extending
+  color: #00f;
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.pink-link, .blue-link {
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.pink-link {
+  color: #c69;
+}
+
+.blue-link {
+  color: #00f;
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>Mixins & @include</h2>
+          <hr>
+          <p>Mixins are blocks of code you @include. We'll get fancier with them later.</p>
+                      <div class="left">
+          <h2 class="syntax-label">.scss</h2>
+          <pre>
+            <code class="scss">@mixin center-block {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.nyan-cat {
+width: 450px;
+@include center-block;
+}</code></pre>
+          </div>
+
+          <div class="right">
+          <h2 class="syntax-label">.css output</h2>
+          <pre>
+            <code class="css">.nyan-cat {
+width: 450px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}</code></pre>
+          </div>
+          <ul class="bottom-links">
+          <h2>More Resources:</h2>
+            <li><a href="http://web-design-weekly.com/2013/05/12/handy-sass-mixins/">Handy Sass Mixins</a></li>
+          </ul>
+        </section>
+      </section>
+
+        <!-- Control Directives -->
+        <section>
+          <section>
+            <h1>Control Directives</h1>
+            <hr>
+            <ul>
+              <li>Lists</li>
+              <li>List Functions</li>
+              <li>Maps</li>
+              <li>@each loop</li>
+              <li>@for loop</li>
+              <li>@while loop</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Lists</h2>
+            <hr>
+            <h2 class="syntax-label">Basic List</h2>
+              <pre>
+              <code class="scss">$social-icons: twitter, facebook, instagram, dribbble;</code></pre>
+              <h2 class="syntax-label">Space-seperated Values</h2>
+              <pre>
+              <code class="scss">$types: text #f00, photo #c69, video #c0ffee, link #bada55;</code></pre>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://hugogiraudel.com/2013/07/15/understanding-sass-lists/">Understanding Sass Lists</a></li>
+              <li><a href="http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/">Advanced Sass List Functions</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Lists in Action</h2>
+            <p>Note: Sass Lists start at <code>1</code>, not <code>0</code>.</p>
+            <hr>
+              <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">$types: text #f00, photo #c69, video #c0ffee, link #bada55;
+
+@each $type in $types {
+     .post-type-#{nth($type, 1)} .post-icon{
+        background: nth($type, 2);
+    }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.post-type-text .post-icon {
+  background: #f00;
+}
+
+.post-type-photo .post-icon {
+  background: #c69;
+}
+
+.post-type-video .post-icon {
+  background: #c0ffee;
+}
+
+.post-type-link .post-icon {
+  background: #bada55;
+}</code></pre>
+            </div>
+            <ul class="bottom-links">
+          </section>
+
+          <section>
+          <h2>List Functions</h2>
+          <hr>
+            <img src="img/func-lists.png" alt="">
+          </section>
+
+          <section>
+            <h2>Maps</h2>
+            <hr>
+            <p>Maps are structured in <code>key: value</code> pairs and accessed with <code>map-get($map-name, key).</code></p>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+.sidebar {
+  width: 30%;
+
+    @media (max-width: map-get($breakpoints, small)) {
+      width: 100%;
+    }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.sidebar {
+  width: 30%;
+}
+@media (max-width: 767px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+</code></pre>
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://viget.com/extend/sass-maps-are-awesome">Sass Maps are Awesome!</a></li>
+              <li><a href="http://www.sitepoint.com/using-sass-maps/">Using Sass Maps</a></li>
+            </ul>
+          </section>
+
+          <section>
+          <h2>Map Functions</h2>
+          <hr>
+            <img src="img/func-maps.png" alt="">
+          </section>
+
+          <section>
+            <h2>@each loop</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+                <code class="scss">@import 'compass';
+
+$colors: (
+  tomato rgb(255,99,71) 'rgb(255,99,71)',
+  'cornflowerblue' rgb(100,149,237) 'rgb(100,149,237)',
+  gold rgb(255,215,0) 'rgb(255,215,0)',
+  hotpink rgb(255,105,180) 'rgb(255,105,180)',
+);
+
+@each $color in $colors {
+  $var-name: nth($color, 1);
+  $hex: nth($color, 2);
+  $css-name: nth($color, 3);
+  .color-box.#{$var-name} {
+    @include contrasted($hex);
+    &:before {
+      content: '#{$var-name}';
+    }
+    &:after {
+      content: '#{$css-name}';
+    }
+  }
+}
+</code>
+              </pre>
+            </div>
+            <div class="right">
+              <h2 class="syntax-label">.css output</h2>
+              <pre>
+                <code class="css">.color-box.tomato {
+  background-color: tomato;
+  color: #000;
+}
+.color-box.tomato:before {
+  content: "tomato";
+}
+.color-box.tomato:after {
+  content: "rgb(255,99,71)";
+}
+
+.color-box.cornflowerblue {
+  background-color: cornflowerblue;
+  color: #000;
+}
+.color-box.cornflowerblue:before {
+  content: "cornflowerblue";
+}
+.color-box.cornflowerblue:after {
+  content: "rgb(100,149,237)";
+}
+
+.color-box.gold {
+  background-color: gold;
+  color: #000;
+}
+.color-box.gold:before {
+  content: "gold";
+}
+.color-box.gold:after {
+  content: "rgb(255,215,0)";
+}
+
+.color-box.hotpink {
+  background-color: hotpink;
+  color: #000;
+}
+.color-box.hotpink:before {
+  content: "hotpink";
+}
+.color-box.hotpink:after {
+  content: "rgb(255,105,180)";
+}
+</code>
+              </pre>
+            </div>
+          </section>
+
+          <section>
+          <h2>@each loop</h2>
+          <hr>
+            <img src="img/color-scheme.png" alt="color scheme">
+          </section>
+
+          <section>
+            <h2>@for loop</h2>
+            <hr>
+            <p>For loop using <code>through</code></p>
+              <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">$columns: 4;
+
+@for $i from 1 through $columns {
+  .cols-#{$i} {
+    width: ((100 / $columns) * $i) * 1%;
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.cols-1 {
+  width: 25%;
+}
+
+.cols-2 {
+  width: 50%;
+}
+
+.cols-3 {
+  width: 75%;
+}
+
+.cols-4 {
+  width: 100%;
+}</code></pre>
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://12devs.co.uk/articles/handy-advanced-sass/">Handy Advanced Sass</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>@for loop</h2>
+            <hr>
+            <p>For loop using <code>to</code></p>
+              <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">$columns: 4;
+
+@for $i from 1 to $columns {
+  .cols-#{$i} {
+    width: ((100 / $columns) * $i) * 1%;
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.cols-1 {
+  width: 25%;
+}
+
+.cols-2 {
+  width: 50%;
+}
+
+.cols-3 {
+  width: 75%;
+}</code></pre>
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://12devs.co.uk/articles/handy-advanced-sass/">Handy Advanced Sass</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>@while loop</h2>
+            <hr>
+            <blockquote>The @while loop has absolutely no use case in a real Sass project, especially since there is no way to break a loop from the inside. Do not use it.
+            <footer><a href="http://sass-guidelin.es/#while">Hugo Giraudel</a></footer>
+            </blockquote>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://thesassway.com/intermediate/if-for-each-while">@if @for @each @while loops</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Sass Math -->
+        <section>
+          <section>
+            <h1>Lets do Some Math & Play with Colors</h1>
+            <hr>
+            <ul>
+              <li>Supported Operators</li>
+              <li>Sass Math</li>
+              <li>Color Functions</li>
+              <li>Playing with Color</li>
+              <li>Mix > Lighten/Darken</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Supported Operators</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">Calculation</h2>
+              <br>
+              <ul>
+                <li class="fragment">+</li>
+                <li class="fragment">-</li>
+                <li class="fragment">*</li>
+                <li class="fragment">/</li>
+                <li class="fragment">%</li>
+              </ul>
+            </div>
+            <div class="right">
+              <h2 class="syntax-label">
+                Comparison
+              </h2>
+              <br>
+              <ul>
+                <li class="fragment">==</li>
+                <li class="fragment">!=</li>
+                <li class="fragment">></li>
+                <li class="fragment"><</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Number Functions</h2>
+            <hr>
+              <img src="img/func-numbers.png" alt="Number Functions">
+          </section>
+
+          <section>
+            <h2>Math with Color</h2>
+            <hr>
+            <p>Input:</p>
+            <pre><code class="scss">p {
+  color: #010203 + #040506;
+}</code></pre>
+
+          <p> <code>01 + 04 = 05, 02 + 05 = 07, and 03 + 06 = 09</code></p>
+          <p>Computed Value:</p>
+          <pre><code class="scss">p {
+  color: #050709;
+}</code></pre>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">Sass Functions Docs</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Color Functions</h2>
+            <hr>
+            <div class="left">
+              <img src="img/func-rgb.png" alt="">
+            </div>
+            <div class="right">
+              <img src="img/func-opacity.png" alt="">
+            </div>
+            <div class="bottom">
+              <img src="img/func-color-other.png" alt="">
+            </div>
+          </section>
+
+          <section>
+            <h2>Playing with Color</h2>
+            <hr>
+            <p data-height="466" data-theme-id="5255" data-slug-hash="hbqsB" data-default-tab="result" data-user="KatieK2" class='codepen'>See the Pen <a href='http://codepen.io/KatieK2/pen/hbqsB/'>Experiments with Sass Color Functions</a> by KatieK (<a href='http://codepen.io/KatieK2'>@KatieK2</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://jackiebalzer.com/color">A Visual Guide to Sass & Compass Color Functions</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Note: Mix > Lighten or Darken</h2>
+            <hr>
+            <p data-height="468" data-theme-id="5255" data-slug-hash="tejhz" data-default-tab="result" data-user="KatieK2" class='codepen'>See the Pen <a href='http://codepen.io/KatieK2/pen/tejhz/'>Dadgumit, Blowouts</a> by KatieK (<a href='http://codepen.io/KatieK2'>@KatieK2</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+        </section>
+
+        <!-- Pulling it Together -->
+        <section>
+          <section>
+            <h1>Deep Dive Into Mixins</h1>
+            <hr>
+            <ul>
+              <li>Mixins + @content</li>
+              <li>Mixins + Maps</li>
+              <li>A Sassy Shape Mixin</li>
+              <li>Using Sassy Shapes</li>
+              <li>Extending Sass</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Mixins and @content</h2>
+            <hr>
+            <p>Mixins can take a variety of args, including <code>@content</code> blocks.</p>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">//mixin
+@mixin smaller-than($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin larger-than($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+//usage
+.heading {
+  font-size: 2em;
+  @include smaller-than(300px) {
+    font-size: 1.5em;
+  }
+  @include larger-than(768px) {
+    font-size: 3em;
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.heading {
+  font-size: 2em;
+}
+@media (max-width: 300px) {
+  .heading {
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 768px) {
+  .heading {
+    font-size: 3em;
+  }
+}</code></pre>
+            </div>
+
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://jshak.es/media-queries-in-sass/">Media Queries in Sass</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Mixins and Maps</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">//our map of breakpoints from earlier
+$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+//mixin using map-get
+@mixin smaller-than($point-name) {
+
+  $width: map-get($breakpoints, $point-name);
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin larger-than($point-name) {
+
+  $width: map-get($breakpoints, $point-name);
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+//usage
+.heading {
+  font-size: 2em;
+  @include smaller-than(small) {
+    font-size: 1.5em;
+  }
+  @include larger-than(medium) {
+    font-size: 3em;
+  }
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.heading {
+  font-size: 2em;
+}
+@media (max-width: 300px) {
+  .heading {
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 768px) {
+  .heading {
+    font-size: 3em;
+  }
+}</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <h2>Sassy Shapes Mixin</h2>
+            <hr>
+            <p>Mixins can take values and run logic loops.</p>
+            <p data-height="450" data-theme-id="5255" data-slug-hash="BhCLi" data-default-tab="result" data-user="unax3" class='codepen'>See the Pen <a href='http://codepen.io/unax3/pen/BhCLi/'>Sassy Shape Machine Mixin</a> by Una Kravets (<a href='http://codepen.io/unax3'>@unax3</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+
+          <section>
+            <h2>Sassy Shapes Mixin</h2>
+            <hr>
+            <p>Putting it to use.</p>
+            <p data-height="450" data-theme-id="5255" data-slug-hash="ujLCs" data-default-tab="result" data-user="unax3" class='codepen'>See the Pen <a href='http://codepen.io/unax3/pen/ujLCs/'>Sassy CSS Puppy</a> by Una Kravets (<a href='http://codepen.io/unax3'>@unax3</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+
+          <section>
+            <h2>Extending Sass</h2>
+            <hr>
+            <p>Ruby methods can be added to the Sass module</p>
+            <pre>
+              <code class="scss">module Sass::Script::Functions
+  def reverse(string)
+    assert_type string, :String
+    Sass::Script::Value::String.new(string.value.reverse)
+  end
+  declare :reverse, [:string]
+end</code></pre>
+
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#adding_custom_functions">Adding Custom Functions</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+
+          <section>
+            <h1>Functions</h1>
+            <hr>
+            <ul>
+              <li>@function</li>
+              <li>SassDoc</li>
+              <li>Theming with Maps</li>
+              <li>@warn, @debug, and @error</li>
+            </ul>
+          </section>
+          <section>
+            <h2>@function</h2>
+            <hr>
+            <p>Instead of outputting lines of Sass the way mixins do, functions return a value.</p>
+            <div class="left">
+              <h2 class="syntax-label">@mixin</h2>
+              <pre>
+                <code class="scss">// @mixin creation
+@mixin my-padding-mixin($some-number) {
+  padding: $some-number;
+}
+
+// Sass usage
+.my-module {
+  @include my-padding-mixin(10px);
+}
+
+// CSS output
+.my-module {
+  padding: 10px;
+}</code></pre>
+            </div>
+            <div class="right">
+              <h2 class="syntax-label">@function</h2>
+              <pre>
+                <code class="scss">// @function creation
+@function my-calculation-function($some-number, $another-number){
+  @return $some-number + $another-number
+}
+
+// Sass usage
+.my-module {
+  padding: my-calculation-function(10px, 5px);
+}
+
+// CSS output
+.my-module {
+  padding: 15px;
+}</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <h2>SassDoc</h2>
+            <hr>
+            <p>A methodology for consistent documentation</p>
+            <pre><code class="scss">/// Mixin helping defining both `width` and `height` simultaneously.
+///
+/// @author Hugo Giraudel
+///
+/// @access public
+///
+/// @param {Length} $width - Element's `width`
+/// @param {Length} $height ($width) - Element's `height`
+///
+/// @example scss - Usage
+/// .foo {
+///   @include size(10em);
+/// }
+///
+/// .bar {
+///   @include size(100%, 10em);
+/// }
+///
+/// @example css - CSS output
+/// .foo {
+///   width: 10em;
+///   height: 10em;
+/// }
+///
+/// .bar {
+///   width: 100%;
+///   height: 10em;
+/// }
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}</code></pre>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://sassdoc.com/">Sass Doc Website</a></li>
+              <li><a href="https://github.com/SassDoc/sassdoc">SassDoc Repo on Github</a></li>
+            </ul>
+          </section>
+
+          <section class="center abs-center">
+          <h2>SassDoc</h2>
+          <hr>
+            <img src="img/sassdoc.png">
+          </section>
+
+          <section>
+            <h2>Theming using Maps</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">variables.scss</h2>
+              <pre>
+              <code class="scss">$__color-palette: (
+  'blue': (
+    core: #4178be,
+    10: #c0e6ff,
+    20: #7cc7ff,
+    30: #5aaafa,
+    40: #5596e6,
+    50: #4178be,
+    60: #325c80,
+    70: #264a60,
+    80: #1d3649,
+    90: #152935,
+    100: #010205
+  ),
+  'green': (
+    core: #4b8400,
+    10: #c8f08f,
+    20: #b4e051,
+    30: #8cd211,
+    40: #6eb400,
+    50: #4b8400,
+    60: #2d660a,
+    70: #144d14,
+    80: #0a3c02,
+    90: #0c2808,
+    100: #010200
+  ),
+  'teal': (
+    core: #008571,
+    10: #a7fae6,
+    20: #6eedd8,
+    30: #41d6c3,
+    40: #00b4a0,
+    50: #008571,
+    60: #006d5d,
+    70: #005448,
+    80: #003c32,
+    90: #012b22,
+    100: #000202
+  ),
+  'purple': (
+    core: #9855d4,
+    10: #eed2ff,
+    20: #d7aaff,
+    30: #ba8ff7,
+    40: #af6ee8,
+    50: #9855d4,
+    60: #734098,
+    70: #562f72,
+    80: #412356,
+    90: #311a41,
+    100: #030103
+  ),
+  'magenta': (
+    core: #db2780,
+    10: #ffd2ff,
+    20: #ff9eee,
+    30: #ff71d4,
+    40: #ff3ca0,
+    50: #db2780,
+    60: #a6266e,
+    70: #7c1c58,
+    80: #601146,
+    90: #3a0b2e,
+    100: #040102
+  )
+);</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">functions.scss</h2>
+            <pre>
+              <code class="scss">// Import the IBM Color Palette
+@import '../variables/colors';
+
+//////////////////////////////
+// Color Palette
+//
+// Gets the specified color from the color palette
+//
+// Usage:
+//
+// background: color('blue', 80); // #1D3649
+// background: color('blue');     // #4178BE
+//////////////////////////////
+@function color($color, $tone: 'core') {
+  // Add a little helper so tone can be passed as single digit number
+  @if type-of($tone) == 'number' {
+    @if $tone % 10 == $tone {
+      $tone: $tone * 10;
+    }
+  }
+  @return map-get(map-get($__color-palette, $color), $tone);
+}</code></pre>
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="https://bugsnag.com/blog/sass-color-palettes">Using Maps in Color Pallets</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Theming Using Maps</h2>
+            <hr>
+            <p>A better look at functions.scss</p>
+            <pre>
+              <code class="scss">// Import the IBM Color Palette
+@import '../variables/colors';
+
+//////////////////////////////
+// Color Palette
+//
+// Gets the specified color from the color palette
+//
+// Usage:
+//
+// background: color('blue', 80); // #1D3649
+// background: color('blue');     // #4178BE
+//////////////////////////////
+@function color($color, $tone: 'core') {
+  // Add a little helper so tone can be passed as single digit number
+  @if type-of($tone) == 'number' {
+    @if $tone % 10 == $tone {
+      $tone: $tone * 10;
+    }
+  }
+  @return map-get(map-get($__color-palette, $color), $tone);
+}</code></pre>
+          </section>
+          <section>
+            <h2>@warn, @debug, & @error</h2>
+            <hr>
+            <p>You can set up custom warnings for debugging your Sass.</p>
+            <pre><code class="scss">$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+@mixin smaller-than($point-name) {
+  @if map-has-key($breakpoints, $point-name) {
+    $width: map-get($breakpoints, $point-name);
+    @media (max-width: $width) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "We couldn't find #{$point-name} in the $breakpoints map! "
+        + "Please make sure it's defined. ";
+  }
+}
+
+.kitten-with-hat {
+  @include smaller-than(meow) {
+    background-color: $pink;
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h2>@warn vs. @error</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">@warn</h2><br>
+              <img src="img/warn.png" alt="warn">
+            </div>
+            <div class="right">
+              <h2 class="syntax-label">@error</h2><br>
+              <img src="img/error.png" alt="error">
+            </div>
+          </section>
+        </section>
+
+        <!-- Thinking Outside the Box -->
+        <section>
+          <section>
+            <h1>Sasstastic Bonuses</h1>
+            <hr>
+            <ul>
+              <li>File Organization</li>
+              <li>Partials</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Partials & @import</h2>
+            <hr>
+            <p>Sass files are split into "partials" for better organization.</p>
+            <div class="left">
+            <h2 class="syntax-label">Manifest File (main.scss)</h2>
+            <pre>
+              <code class="scss">@import "vendors/bootstrap";
+@import "vendors/jquery-ui";
+
+@import "utils/variables";
+@import "utils/functions";
+@import "utils/mixins";
+@import "utils/placeholders";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "layout/navigation";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/forms";
+
+@import "components/buttons";
+@import "components/carousel";
+@import "components/cover";
+@import "components/dropdown";
+
+@import "pages/home";
+@import "pages/contact";
+
+@import "themes/theme";
+@import "themes/admin";</code></pre>
+</div>
+            <div class="right">
+              <img style = "width: 45%" src="img/sass-directories.jpg" alt="sass directories">
+            </div>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://una.github.io/sass-director">Sass Director</a></li>
+              <li><a href="http://zurb.com/university/lessons/35">Wrangling Sass @import files</a></li>
+            </ul>
+          </section>
+
+        <section>
+          <h2>Sass + JSON</h2>
+            <li><a href="http://css-tricks.com/making-sass-talk-to-javascript-with-json/">CSS Tricks: Sass w/Javascript with JSON</a></li>
+            <li><a href="http://hugogiraudel.com/2014/01/20/json-in-sass/">SassyJson Library</a></li>
+            <li><a href="http://viget.com/extend/sharing-data-between-sass-and-javascript-with-json">Sharing Data Between Sass & JS with JSON</a></li>
+            <br>
+          <h2>Algorithms & Math</h2>
+            <li><a href="https://github.com/HugoGiraudel/SassyMatrix">Sassy Matrix</a></li>
+            <li><a href="https://github.com/HugoGiraudel/SassySort">Sassy Sort</a></li>
+            <br>
+          <h2>Grid Systems</h2>
+            <li><a href="https://github.com/at-import/Singularity">Singularity</a></li>
+            <li><a href="http://susy.oddbird.net/">Susy</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>More Resources</h1>
+          <ul class="resource-list">
+            <li><a href="http://sass-lang.com">Sass Website</a></li>
+            <li><a href="http://thesassway.com">The Sass Way Blog Resources</a></li>
+            <li><a href="http://torquemag.io/developers-guide-learning-sass-twenty-minutes-less/">Developers Guide to Sass</a></li>
+            <li><a href="http://sass-compatibility.github.io/">Sass Compatability</a></li>
+            <li><a href="http://sass-guidelin.es">Sass Guidelines</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Thank You</h1>
+        </section>
+
+      <!-- END OF SLIDES -->
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
