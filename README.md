@@ -12,10 +12,8 @@ This workshop will explore advanced Sass functionality. We’ll talk about the f
 
 ### Tools and Resources
 
-- [Slide Deck #1](http://una.github.io/sass-for-devs/#/)
-- [Or This Slide Deck?](http://una.github.io/slides-intro-to-sass)
+- [Slide Deck](http://una.github.io/adv-sass-workshop/slides/)
 - [Sassmeister](http://sassmeister.com/)
--
 
 ### Gameplan
 
