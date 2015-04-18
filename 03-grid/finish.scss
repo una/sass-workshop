@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+$columns: 4;
+
+// Meh, okay
+@for $i from 1 through $columns {
+  .span-#{$i} {
+      width: ((100 / $columns) * $i) * 1%;
+  }
+}
+
+// Better
+// (placeholder to extend parent):
+@for $i from 1 through $columns {
+  %cols-#{$i}-#{$columns} {
+    li {
+      width: ((100 / $columns) * $i) * 1%;
+    }
+  }
+}
+
+.list-one{
+  @extend %cols-1-4;
+  margin: 0;
+  padding: 0;
+
+  li {
+    height: 30px;
+    background: hotpink;
+    display: inline-block;
+    list-style: none;
+    float: left;
+    outline: 1px solid dimgrey;
+  }
+}
+
+// even better
+// (placeholder to extend element)
+
+// Better (placeholder selector):
+@for $i from 1 through $columns {
+  %cols-#{$i}of#{$columns} {
+      width: ((100 / $columns) * $i) * 1%;
+  }
+}
+
+.list-item {
+  @extend %cols-2of4;
+  height: 30px;
+  background: limegreen;
+  float: left;
+  outline: 1px solid;
+  padding: 10px;
+  list-style: none;
+}

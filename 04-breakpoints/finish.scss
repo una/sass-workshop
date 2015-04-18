@@ -1,0 +1,30 @@
+// breakpoint map
+$breakpoints: (
+  'break-1': 600px,
+  'break-2': 800px
+);
+
+// breakpoint mixin with warning
+@mixin breakpoint($name) {
+  @if not map-has-key($breakpoints, $name) {
+    @warn "Invalid breakpoint `#{$name}`.";
+  }
+
+  @else {
+    @media (min-width: map-get($breakpoints, $name)) {
+      @content;
+    }
+  }
+}
+
+//using our breakpoint on a div
+div {
+  width: 100%;
+  height: 100px;
+  display: block;
+  background: blue;
+
+  @include breakpoint(break-1) {
+    background: red;
+  }
+}

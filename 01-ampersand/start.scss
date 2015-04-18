@@ -1,0 +1,14 @@
+.item-summary {
+  background-color: white;
+  width: 100%;
+  display: block;
+
+  img {
+    width: 20%;
+  }
+}
+
+// item with :hover pseudo-element
+.item-summary:hover {
+    background-color: gray;
+  }

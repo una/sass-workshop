@@ -1,0 +1,50 @@
+////////////////////////////////////////
+//
+// THE ALMIGHTY AMPERSAND
+//
+////////////////////////////////////////
+
+// E-Commerce Store Item Summary
+// The Ampersand for dev-side nesting but not outputted nesting (explain why its bad)
+// My Rule: Only nest once if you need to
+
+.item-summary {
+  background-color: white;
+  width: 100%;
+  display: block;
+
+  // when using an ampersand, no nesting occurs. The item is immediately
+  &:hover {
+    background-color: gray;
+  }
+
+  img {
+    width: 20%;
+  }
+
+  // this works really well for BEM syntax
+  // **(BEM MIXIN?)
+  &--showcased {
+    outline: 3px solid red;
+
+    img {
+      width: 50%;
+    }
+  }
+
+  // The trailing ampersand is useful for nested structures for the developer's purposes, but brings switches the order of the scope
+  // this will be for all .item-summary in the sidebar
+  sidebar & {
+    width: 100px;
+    float: left;
+  }
+
+  // The Double Ampersand will affect only items that follow an item of the same type (so you can do vertical spacing without the awkward first element having that style)
+  & + & {
+    margin-top: 2px;
+  }
+
+  img > & {
+    color: purple;
+  }
+}

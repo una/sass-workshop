@@ -1,0 +1,7 @@
+$types: text #f00, photo #c69, video #c0ffee, link #bada55;
+
+@each $type in $types {
+     .post-type-#{nth($type, 1)} .post-icon{
+        background: nth($type, 2);
+    }
+}
