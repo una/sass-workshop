@@ -514,6 +514,10 @@ h2 {
           <section class="text-center">
             <img src="img/ampersand.gif" height="570" width="790" alt="Ampersand gif">
           </section>
+
+          <section class="text-center">
+            <h1>Ampersand Walk Through</h1>
+          </section>
       </section>
 
         <!-- Beyond Basics -->
@@ -972,7 +976,7 @@ $colors: (
         <!-- Sass Math -->
         <section>
           <section>
-            <h1>Lets do Some Math & Play with Colors</h1>
+            <h1>Let's do Some Math & Play with Colors</h1>
             <hr>
             <ul>
               <li>Supported Operators</li>
@@ -1066,6 +1070,10 @@ $colors: (
             <hr>
             <p data-height="468" data-theme-id="5255" data-slug-hash="tejhz" data-default-tab="result" data-user="KatieK2" class='codepen'>See the Pen <a href='http://codepen.io/KatieK2/pen/tejhz/'>Dadgumit, Blowouts</a> by KatieK (<a href='http://codepen.io/KatieK2'>@KatieK2</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
             <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+
+          <section class="text-center">
+            <h1>Make A Color Pallette (part 1)</h1>
           </section>
         </section>
 
@@ -1216,24 +1224,6 @@ $breakpoints: (
             <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
           </section>
 
-          <section>
-            <h2>Extending Sass</h2>
-            <hr>
-            <p>Ruby methods can be added to the Sass module</p>
-            <pre>
-              <code class="scss">module Sass::Script::Functions
-  def reverse(string)
-    assert_type string, :String
-    Sass::Script::Value::String.new(string.value.reverse)
-  end
-  declare :reverse, [:string]
-end</code></pre>
-
-            <ul class="bottom-links">
-            <h2>More Resources:</h2>
-              <li><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#adding_custom_functions">Adding Custom Functions</a></li>
-            </ul>
-          </section>
         </section>
 
         <section>
@@ -1290,48 +1280,6 @@ end</code></pre>
             </div>
           </section>
 
-          <section>
-            <h2>SassDoc</h2>
-            <hr>
-            <p>A methodology for consistent documentation</p>
-            <pre><code class="scss">/// Mixin helping defining both `width` and `height` simultaneously.
-///
-/// @author Hugo Giraudel
-///
-/// @access public
-///
-/// @param {Length} $width - Element's `width`
-/// @param {Length} $height ($width) - Element's `height`
-///
-/// @example scss - Usage
-/// .foo {
-///   @include size(10em);
-/// }
-///
-/// .bar {
-///   @include size(100%, 10em);
-/// }
-///
-/// @example css - CSS output
-/// .foo {
-///   width: 10em;
-///   height: 10em;
-/// }
-///
-/// .bar {
-///   width: 100%;
-///   height: 10em;
-/// }
-@mixin size($width, $height: $width) {
-  width: $width;
-  height: $height;
-}</code></pre>
-            <ul class="bottom-links">
-            <h2>More Resources:</h2>
-              <li><a href="http://sassdoc.com/">Sass Doc Website</a></li>
-              <li><a href="https://github.com/SassDoc/sassdoc">SassDoc Repo on Github</a></li>
-            </ul>
-          </section>
 
           <section class="center abs-center">
           <h2>SassDoc</h2>
@@ -1517,6 +1465,10 @@ end</code></pre>
               <img src="img/error.png" alt="error">
             </div>
           </section>
+
+          <section class="text-center">
+            <h1>Your Turn!</h1>
+          </section>
         </section>
 
         <!-- Thinking Outside the Box -->
@@ -1526,6 +1478,7 @@ end</code></pre>
             <hr>
             <ul>
               <li>File Organization</li>
+              <li>SassDoc</li>
               <li>Partials</li>
             </ul>
           </section>
@@ -1573,6 +1526,49 @@ end</code></pre>
             <h2>More Resources:</h2>
               <li><a href="http://una.github.io/sass-director">Sass Director</a></li>
               <li><a href="http://zurb.com/university/lessons/35">Wrangling Sass @import files</a></li>
+            </ul>
+          </section>
+
+<section>
+            <h2>SassDoc</h2>
+            <hr>
+            <p>A methodology for consistent documentation</p>
+            <pre><code class="scss">/// Mixin helping defining both `width` and `height` simultaneously.
+///
+/// @author Hugo Giraudel
+///
+/// @access public
+///
+/// @param {Length} $width - Element's `width`
+/// @param {Length} $height ($width) - Element's `height`
+///
+/// @example scss - Usage
+/// .foo {
+///   @include size(10em);
+/// }
+///
+/// .bar {
+///   @include size(100%, 10em);
+/// }
+///
+/// @example css - CSS output
+/// .foo {
+///   width: 10em;
+///   height: 10em;
+/// }
+///
+/// .bar {
+///   width: 100%;
+///   height: 10em;
+/// }
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}</code></pre>
+            <ul class="bottom-links">
+            <h2>More Resources:</h2>
+              <li><a href="http://sassdoc.com/">Sass Doc Website</a></li>
+              <li><a href="https://github.com/SassDoc/sassdoc">SassDoc Repo on Github</a></li>
             </ul>
           </section>
 

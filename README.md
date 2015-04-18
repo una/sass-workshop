@@ -63,12 +63,10 @@ The way this workshop will run is as follows:
   - Color functions (tips: mix > lighten or darken)
   - Writing custom functions
   - @warn, @debug, @error
-  - *Challenge: Write a custom function to ____*
+  - *Challenge: Make an on-the-fly Color Pallete*
 
-**Final Challenge: Building an on-the-fly Pattern Library**
+**Final Challenge: Putting it All Together**
 
-  - Color map
-  - map-get() color function
   - Separation of files
   - Manifest file
   - Bonus: SassDoc
