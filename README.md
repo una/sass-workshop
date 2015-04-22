@@ -14,6 +14,7 @@ This workshop will explore advanced Sass functionality. We’ll talk about the f
 
 - [Slide Deck](http://una.github.io/adv-sass-workshop/slides/)
 - [Sassmeister](http://sassmeister.com/)
+- [Sass Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 
 ### Gameplan
 
