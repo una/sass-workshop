@@ -3,6 +3,10 @@ $white: #fff;
 $brand-color: #88d9e6;
 $brand-secondary: #8b8Bae;
 $dark: #374b4a;
+$brand-dark: mix($brand-color, $dark, 80%);
+$brand-light: mix($brand-color, $white, 40%);
+$brand-secondary: mix(invert($brand-color), $dark, 30%);
+
 
 // variables
 .dark {
@@ -20,3 +24,20 @@ $dark: #374b4a;
 .brand-light {
   background-color: $brand-light;
 }
+
+.light {
+  background-color: light;
+}
+
+.brand-secondary {
+  background-color: $brand-secondary;
+}
+
+// <ul>
+//   <li class="dark"></li>
+//   <li class="brand-dark"></li>
+//   <li class="brand-color"></li>
+//   <li class="brand-light"></li>
+//   <li class="light"></li>
+//   <li class="brand-secondary"></li>
+// </ul>

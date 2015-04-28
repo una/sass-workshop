@@ -8,6 +8,10 @@ $dark: #374b4a;
   background-color: $dark;
 }
 
+.light {
+  background-color: $light;
+}
+
 .brand-color {
   background-color: $brand-color;
 }
@@ -19,3 +23,11 @@ $dark: #374b4a;
 .brand-light {
   background-color: $brand-light;
 }
+
+
+// <ul>
+//   <li class="dark"></li>
+//   <li class="brand-dark"></li>
+//   <li class="light"></li>
+//   <li class="brand-light"></li>
+// </ul>
