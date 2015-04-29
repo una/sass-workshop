@@ -17,7 +17,12 @@ $colors: (
 );
 
 @function color($color-name, $tone: base) {
-  @return map-get(map-get($colors, $color-name), $tone);
+  @if map-has-key($colors, $color-name) {
+    @return map-get(map-get($colors, $color-name), $tone);
+  } @else {
+    @warn "We couldn't find #{$color-name} in the $colors map! "
+            + "Please make sure it's defined. ";
+  }
 }
 
 // sass

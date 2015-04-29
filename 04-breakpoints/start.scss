@@ -8,6 +8,14 @@ $breakpoints: (
 }
 
 //using our breakpoint on a div
+//using our breakpoint on a div
 div {
+  width: 100%;
+  height: 100px;
+  display: block;
+  background: blue;
 
+  @include breakpoint(break-1) {
+    background: red;
+  }
 }
