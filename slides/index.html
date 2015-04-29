@@ -1239,25 +1239,7 @@ $breakpoints: (
             <h2>@function</h2>
             <hr>
             <p>Instead of outputting lines of Sass the way mixins do, functions return a value.</p>
-            <div class="left">
-              <h2 class="syntax-label">@mixin</h2>
-              <pre>
-                <code class="scss">// @mixin creation
-@mixin my-padding-mixin($some-number) {
-  padding: $some-number;
-}
-
-// Sass usage
-.my-module {
-  @include my-padding-mixin(10px);
-}
-
-// CSS output
-.my-module {
-  padding: 10px;
-}</code></pre>
-            </div>
-            <div class="right">
+            <div>
               <h2 class="syntax-label">@function</h2>
               <pre>
                 <code class="scss">// @function creation
