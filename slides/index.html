@@ -1078,9 +1078,11 @@ $colors: (
             <ul>
               <li>Mixins + @content</li>
               <li>Mixins + Maps</li>
+              <li>Default Settings</li>
+              <li>Null Defaults</li>
               <li>A Sassy Shape Mixin</li>
               <li>Using Sassy Shapes</li>
-              <li>Extending Sass</li>
+              <li>Recreating contrasted()</li>
             </ul>
           </section>
 
@@ -1202,6 +1204,42 @@ $breakpoints: (
           </section>
 
           <section>
+            <h2>Variable Inputs</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">.scss</h2>
+              <pre>
+              <code class="scss">// setting defaults
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+.ex-1 {
+  @include size(10px, 30px);
+}
+
+.ex-2 {
+  @include size(10px);
+}</code></pre>
+            </div>
+
+            <div class="right">
+            <h2 class="syntax-label">.css output</h2>
+            <pre>
+              <code class="css">.ex-1 {
+  width: 10px;
+  height: 30px;
+}
+
+.ex-2 {
+  width: 10px;
+  height: 10px;
+}</code></pre>
+            </div>
+          </section>
+
+          <section>
             <h2>Sassy Shapes Mixin</h2>
             <hr>
             <p>Mixins can take values and run logic loops.</p>
@@ -1217,7 +1255,35 @@ $breakpoints: (
             <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
           </section>
 
-          <section class="center">
+          <section>
+            <h2>SVG fallback mixin</h2>
+              <hr>
+              <pre><code>$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+
+@mixin background-image($name, $size: false){
+
+    background-image: url(#{$image-path}/#{$name}.svg);
+
+    @if($size){
+        background-size: $size;
+    }
+
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}</code></pre>
+<ul class="bottom-links">
+<h2>More Resources:</h2>
+  <li><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/">8 Useful Mixins</a></li>
+</ul>
+          </section>
+
+          <section class="text-center">
             <h1>Compass contrasted() Mixin</h1>
           </section>
 
@@ -1259,6 +1325,45 @@ $breakpoints: (
             </div>
             <div></div>
           </section>
+
+          <section>
+            <h2>PX to REM function</h2>
+            <hr>
+            <div>
+              <pre>
+                <code class="scss">@function rem-please($px) {
+    @return ($px/16)+rem;
+}
+
+h1 {
+  font-size: rem-please(32);
+}
+
+// CSS:
+// h1 {
+//  font-size: 2rem;
+// }</code></pre>
+            </div>
+            <div></div>
+          </section>
+
+        <section>
+          <h2>Arglist</h2>
+          <hr>
+          <p>When you have an unknown number of inputs</p>
+          <div>
+            <pre>
+              <code class="scss">@mixin shadows($shadows...) {
+  box-shadow: $shadows;
+}</code></pre>
+          </div>
+          <ul class="bottom-links">
+          <h2>More Resources:</h2>
+            <li><a href="http://www.sitepoint.com/sass-multiple-arguments-lists-or-arglist/">Blog Post on Arglists</a></li>
+          </ul>
+
+
+        </section>
 
           <section>
             <h2>Theming using Maps</h2>
