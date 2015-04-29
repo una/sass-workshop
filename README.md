@@ -20,8 +20,12 @@ This workshop will explore advanced Sass functionality. We’ll talk about the f
 
 The way this workshop will run is as follows:
 
-### Overview
+** Overview**
   - Quick Sass review
+  - Syntax
+  - Variables
+  - Variable Abstraction
+  - Nesting
 
 **The Almighty Ampersand**
 
@@ -29,7 +33,7 @@ The way this workshop will run is as follows:
   - Naming with the ampersand
   - The trailing ampersand
   - The Double Ampersand
-  - *Challenge: Use the Ampersand in 3 different ways*
+  - *01 - Walkthrough: Ampersand*
 
 **Beyond Basics**
 
@@ -42,37 +46,52 @@ The way this workshop will run is as follows:
 
   - Lists
   - List Functions
+  - *02 - List Exercise*
   - Maps
   - Map Functions
   - @each loop
   - @for loop
   - @while loop
+  - * 03 - Grid Exercise *
+
+
+**Let's Do Some Math and Play With Colors**
+
+  - Supported Operators
+  - Sass Math
+  - Color functions
+  - Playing with Color
+  - * 05 - Color Generation *
 
 **Mixin Deep Dive**
 
-  - Mixin arguments
-  - Arglists
-  - @content blocks
+  - Mixin + @content
+  - Mixins + Maps
+  - * 04 - Breakpoint Mixin*
   - Default arguments
-  - Using [null](http://blog.teamtreehouse.com/smarter-sass-mixins-null)
-  - *Challenge: Write a breakpoint mixin that reads from a map of breakpoints*
+  - Null Defaults
+  - Sassy Shape Mixin
+  - Using Sassy Shapes
+  - SVG Fallback Mixin
+  - * Walkthrough: Recreating contrasted() *
 
-**Functions**
-
-  - Number functions <
-  - String functions <
-  - Color functions (tips: mix > lighten or darken)
+** Functions**
   - Writing custom functions
-  - @warn, @debug, @error
-  - *Challenge: Make an on-the-fly Color Pallete*
+  - Px to Rem Function
+  - Property Getter
+  - * 06 - Color Function *
+  - Arglists
+
+** Theming **
+
+  - !default
+  - @warn and @error
+  - Theming with Maps
+  - * Walkthrough: Modular Animations*
+
+  **Sass++**
+    - File Organization
+    - SassDoc
+    - Advanced Example: Pixel Art
 
 **Final Challenge: Putting it All Together**
-
-  - Separation of files
-  - Manifest file
-  - Bonus: SassDoc
-  - Html output to build blocks with pseudo elements based on color map
-
-**Bonus: Getting Organized **
-  - File Organization
-  - Partials
