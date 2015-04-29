@@ -1,0 +1,27 @@
+$colors: (
+  'red': (
+    tint: #f66,
+    base: #c00,
+    shade: #a00
+  ),
+  'orange': (
+    tint: #f94,
+    base: #f50,
+    shade: #f12
+  ),
+  'yellow': (
+    tint: #ffa,
+    base: #ff0,
+    shade: #ff5
+  )
+);
+
+@function color($color-name, $tone: base) {
+  @return map-get(map-get($colors, $color-name), $tone);
+}
+
+// sass
+h1 {
+  background: color('yellow');
+  color: color('red', 'shade');
+}

@@ -1070,10 +1070,9 @@ $colors: (
           </section>
         </section>
 
-        <!-- Pulling it Together -->
         <section>
           <section>
-            <h1>Let's Talk Into Mixins</h1>
+            <h1>Let's Talk Mixins</h1>
             <hr>
             <ul>
               <li>Mixins + @content</li>
@@ -1082,6 +1081,7 @@ $colors: (
               <li>Null Defaults</li>
               <li>A Sassy Shape Mixin</li>
               <li>Using Sassy Shapes</li>
+              <li>SVG Fall back Mixin</li>
               <li>Recreating contrasted()</li>
             </ul>
           </section>
@@ -1296,7 +1296,8 @@ $retina-suffix: '@2x';
             <hr>
             <ul>
               <li>@function</li>
-              <li>Theming with Maps</li>
+              <li>px to rem function</li>
+              <li>Property Getter</li>
               <li>@warn and @error</li>
             </ul>
           </section>
@@ -1347,6 +1348,34 @@ h1 {
             <div></div>
           </section>
 
+          <section>
+            <h2>Property Getter</h2>
+            <hr>
+            <div>
+              <pre>
+                <code class="scss">// Map of Props:
+$properties:(
+    bodybg: #aeaeae,
+    iconcolor: $color2,
+    textcolor: $color3,
+    bodyfont:'PT Sans'
+);
+
+// Prop-Getter Function:
+@function prop($value, $map: $properties){
+    $value: map-get($map, $value);
+    @return $value;
+}
+
+// Usage:
+body {
+  background: prop(bodybg);
+}
+</code></pre>
+            </div>
+            <div></div>
+          </section>
+
         <section>
           <h2>Arglist</h2>
           <hr>
@@ -1361,9 +1390,123 @@ h1 {
           <h2>More Resources:</h2>
             <li><a href="http://www.sitepoint.com/sass-multiple-arguments-lists-or-arglist/">Blog Post on Arglists</a></li>
           </ul>
-
-
         </section>
+      </section>
+
+      <section>
+        <section>
+          <h1>Theming</h1>
+          <hr>
+          <ul>
+            <li>!default</li>
+            <li>Theming with color maps</li>
+            <li>Modular Animations</li>
+            <li>Null Defaults</li>
+          </ul>
+        </section>
+
+       <section>
+            <h2>!default</h2>
+            <hr>
+
+            <p><code>!default</code> prevents a variable from being reassigned</p>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2><br>
+            <pre><code class="scss">$font--base-size: 18px;
+
+// set defaults
+$font--base-size: 20px !default;
+$font--base-color: #ccc !default;
+
+// implement
+body {
+  font-size: $font--base-size;
+  color: $font--base-color;
+}</code></pre></div>
+
+<div class="right">
+<h2 class="syntax-label">.css</h2><br>
+  <pre><code class="css">body {
+font-size: 18px;
+color: #ccc; }</code></pre>
+</div>
+<ul class="bottom-links">
+  <li><a href="http://www.mozmorris.com/2014/03/10/using-guarded-assignment-default-in-sass.html">Using Guarded Assignment or !default in Sass</a></li>
+</ul></section>
+
+
+       <section>
+            <h2>!default Theming</h2>
+            <hr>
+
+            <p><code>!default</code> prevents a variable from being reassigned</p>
+            <div class="left">
+            <h2 class="syntax-label">.scss</h2><br>
+            <pre><code class="scss">$font--base-size: 18px;
+
+// set defaults
+$font--base-size: 20px !default;
+$font--base-color: #ccc !default;
+
+// implement
+body {
+  font-size: $font--base-size;
+  color: $font--base-color;
+}</code></pre></div>
+
+<div class="right">
+<h2 class="syntax-label">.css</h2><br>
+  <pre><code class="css">body {
+font-size: 18px;
+color: #ccc; }</code></pre>
+</div>
+<ul class="bottom-links">
+  <li><a href="http://www.mozmorris.com/2014/03/10/using-guarded-assignment-default-in-sass.html">Using Guarded Assignment or !default in Sass</a></li>
+</ul></section>
+
+          <section>
+            <h2>@warn & @error</h2>
+            <hr>
+            <p>You can set up custom warnings for debugging your Sass.</p>
+            <pre><code class="scss">$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+@mixin smaller-than($point-name) {
+  @if map-has-key($breakpoints, $point-name) {
+    $width: map-get($breakpoints, $point-name);
+    @media (max-width: $width) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "We couldn't find #{$point-name} in the $breakpoints map! "
+        + "Please make sure it's defined. ";
+  }
+}
+
+.kitten-with-hat {
+  @include smaller-than(meow) {
+    background-color: $pink;
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h2>@warn vs. @error</h2>
+            <hr>
+            <div class="left">
+              <h2 class="syntax-label">@warn</h2><br>
+              <img src="img/warn.png" alt="warn">
+            </div>
+            <div class="right">
+              <h2 class="syntax-label">@error</h2><br>
+              <img src="img/error.png" alt="error">
+            </div>
+          </section>
 
           <section>
             <h2>Theming using Maps</h2>
@@ -1500,52 +1643,16 @@ h1 {
   @return map-get(map-get($__color-palette, $color), $tone);
 }</code></pre>
           </section>
-          <section>
-            <h2>@warn, @debug, & @error</h2>
-            <hr>
-            <p>You can set up custom warnings for debugging your Sass.</p>
-            <pre><code class="scss">$breakpoints: (
-  small: 767px,
-  medium: 992px,
-  large: 1200px
-);
 
-@mixin smaller-than($point-name) {
-  @if map-has-key($breakpoints, $point-name) {
-    $width: map-get($breakpoints, $point-name);
-    @media (max-width: $width) {
-      @content;
-    }
-  }
-
-  @else {
-    @warn "We couldn't find #{$point-name} in the $breakpoints map! "
-        + "Please make sure it's defined. ";
-  }
-}
-
-.kitten-with-hat {
-  @include smaller-than(meow) {
-    background-color: $pink;
-  }
-}</code></pre>
+          <section class="text-center">
+            <h1>Try it Yourselves!</h1>
+            <p>(Color Mapping)</p>
           </section>
-
-          <section>
-            <h2>@warn vs. @error</h2>
-            <hr>
-            <div class="left">
-              <h2 class="syntax-label">@warn</h2><br>
-              <img src="img/warn.png" alt="warn">
-            </div>
-            <div class="right">
-              <h2 class="syntax-label">@error</h2><br>
-              <img src="img/error.png" alt="error">
-            </div>
           </section>
 
           <section class="text-center">
             <h1>Bringing it All Together</h1>
+            <p>(Modular Animations)</p>
           </section>
 
         </section>
@@ -1553,12 +1660,12 @@ h1 {
         <!-- Thinking Outside the Box -->
         <section>
           <section>
-            <h1>Sasstastic Bonuses</h1>
+            <h1>Sass++</h1>
             <hr>
             <ul>
               <li>File Organization</li>
               <li>SassDoc</li>
-              <li>Partials</li>
+              <li>Advanced Example: Pixel Art</li>
             </ul>
           </section>
 
@@ -1652,7 +1759,36 @@ h1 {
           </section>
 
         <section class="text-center">
+          <h1>Advanced Sass Fun</h1>
+          <p>(Pixel Art)</p>
+        </section>
+
+        <section>
+        <h2>Understanding Drop Shadow Art</h2>
+        <hr>
+          <p data-height="400" data-theme-id="5255" data-slug-hash="rhlKJ" data-default-tab="result" data-user="jordanwade" class='codepen'>See the Pen <a href='http://codepen.io/jordanwade/pen/rhlKJ/'>Dhuun</a> by Jordan Wade (<a href='http://codepen.io/jordanwade'>@jordanwade</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+          <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+        </section>
+
+        <section>
+          <h2>Making Pixel Art With Sass</h2>
+          <hr>
+          <p data-height="405" data-theme-id="5255" data-slug-hash="LohqG" data-default-tab="result" data-user="jackarmley" class='codepen'>See the Pen <a href='http://codepen.io/jackarmley/pen/LohqG/'>Cross stitch: Pixel art out of box shadow magicerizer</a> by Jack Armley (<a href='http://codepen.io/jackarmley'>@jackarmley</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+          <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+        </section>
+
+        <section class="text-center">
           <h1>Your Turn!</h1>
+          <br><br>
+          <p>Work on refactoring your own code <strong>OR</strong> </p>
+          <p>Build a Style Guide & Layout System based on a single color.</p>
+            <ul>
+              <li>File Organization</li>
+              <li>Variable Structure</li>
+              <li>Style Syntax</li>
+              <li>Using mixins with debugging</li>
+            </ul>
+          </p>
         </section>
 
         <section>
