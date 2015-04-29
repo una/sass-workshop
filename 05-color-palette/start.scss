@@ -1,0 +1,33 @@
+// things to mix
+$white: #fff;
+$brand-color: #88d9e6;
+$dark: #374b4a;
+
+// variables
+.dark {
+  background-color: $dark;
+}
+
+.light {
+  background-color: $light;
+}
+
+.brand-color {
+  background-color: $brand-color;
+}
+
+.brand-dark {
+  background-color: $brand-dark;
+}
+
+.brand-light {
+  background-color: $brand-light;
+}
+
+
+// <ul>
+//   <li class="dark"></li>
+//   <li class="brand-dark"></li>
+//   <li class="light"></li>
+//   <li class="brand-light"></li>
+// </ul>
