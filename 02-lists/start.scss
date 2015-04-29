@@ -1,0 +1,14 @@
+$backgrounds:
+//CLASS_SUFFIX   IMAGE_FILENAME,
+  "home"         "home.jpg",
+  "shopping"     "shop.jpg",
+  "news"         "news_01.png",
+  "services"     "thumbs/services.png"
+;
+
+// We're setting background images for each header section within one map!
+
+// loop through this list and produce something that follows this pattern:
+// .header--shopping {
+//  background: url("../images/shop.jpg");
+// }

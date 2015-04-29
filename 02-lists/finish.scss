@@ -1,7 +1,27 @@
-$post-types: text #f00, photo #c69, video #c0ffee, link #bada55;
+$backgrounds:
+//CLASS_SUFFIX   IMAGE_FILENAME,
+  "home"         "home.jpg",
+  "shopping"     "shop.jpg",
+  "news"         "news_01.png",
+  "services"     "thumbs/services.png"
+;
 
-@each $type in $post-types {
-     .post-type-#{nth($type, 1)} .post-icon{
-        background: nth($type, 2);
-    }
+// for every thing in the list (minus the top comment)
+@for $i from 1 through length($backgrounds) {
+
+  // the variable $item refers to the line in the list
+  $item: nth($backgrounds, $i);
+
+  // class suffix is the first n value in $item
+  $class-suffix: nth($item, 1);
+
+  // image filename is the second n value in $item
+  $image-filename: nth($item, 2);
+
+  // creating the class here
+  .header--#{$class-suffix} {
+    background: url('../images/#{$image-filename}');
+  }
 }
+
+// example from Hugo Giraudel
