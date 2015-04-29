@@ -1298,7 +1298,7 @@ $retina-suffix: '@2x';
               <li>@function</li>
               <li>px to rem function</li>
               <li>Property Getter</li>
-              <li>@warn and @error</li>
+              <li>Arglists</li>
             </ul>
           </section>
 
@@ -1399,7 +1399,8 @@ body {
           <hr>
           <ul>
             <li>!default</li>
-            <li>Theming with color maps</li>
+            <li>@warn and @error</li>
+            <li>Theming with Maps</li>
             <li>Modular Animations</li>
             <li>Null Defaults</li>
           </ul>
@@ -1409,7 +1410,7 @@ body {
             <h2>!default</h2>
             <hr>
 
-            <p><code>!default</code> prevents a variable from being reassigned</p>
+            <p><code>!default</code> will assign a value only if the variable doesn't already have one</p>
             <div class="left">
             <h2 class="syntax-label">.scss</h2><br>
             <pre><code class="scss">$font--base-size: 18px;
@@ -1439,12 +1440,10 @@ color: #ccc; }</code></pre>
             <h2>!default Theming</h2>
             <hr>
 
-            <p><code>!default</code> prevents a variable from being reassigned</p>
+            <p>It creates a <strong>global</strong> variable for theming</p>
             <div class="left">
             <h2 class="syntax-label">.scss</h2><br>
-            <pre><code class="scss">$font--base-size: 18px;
-
-// set defaults
+            <pre><code class="scss">// set defaults
 $font--base-size: 20px !default;
 $font--base-color: #ccc !default;
 
@@ -1452,17 +1451,27 @@ $font--base-color: #ccc !default;
 body {
   font-size: $font--base-size;
   color: $font--base-color;
+}
+
+$font--base-size: 18px;
+
+h1 {
+  font-size: $font--base-size;
+  color: $font--base-color;
 }</code></pre></div>
 
 <div class="right">
 <h2 class="syntax-label">.css</h2><br>
   <pre><code class="css">body {
-font-size: 18px;
-color: #ccc; }</code></pre>
-</div>
-<ul class="bottom-links">
-  <li><a href="http://www.mozmorris.com/2014/03/10/using-guarded-assignment-default-in-sass.html">Using Guarded Assignment or !default in Sass</a></li>
-</ul></section>
+  font-size: 20px;
+  color: #ccc;
+}
+
+h1 {
+  font-size: 18px;
+  color: #ccc;
+}</code></pre>
+</div></section>
 
           <section>
             <h2>@warn & @error</h2>
