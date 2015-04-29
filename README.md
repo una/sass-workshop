@@ -20,7 +20,7 @@ This workshop will explore advanced Sass functionality. We’ll talk about the f
 
 The way this workshop will run is as follows:
 
-** Overview**
+**Overview**
   - Quick Sass review
   - Syntax
   - Variables
@@ -52,7 +52,7 @@ The way this workshop will run is as follows:
   - @each loop
   - @for loop
   - @while loop
-  - * 03 - Grid Exercise *
+  - *03 - Grid Exercise*
 
 
 **Let's Do Some Math and Play With Colors**
@@ -61,35 +61,35 @@ The way this workshop will run is as follows:
   - Sass Math
   - Color functions
   - Playing with Color
-  - * 05 - Color Generation *
+  - *05 - Color Generation*
 
 **Mixin Deep Dive**
 
   - Mixin + @content
   - Mixins + Maps
-  - * 04 - Breakpoint Mixin*
+  - *04 - Breakpoint Mixin*
   - Default arguments
   - Null Defaults
   - Sassy Shape Mixin
   - Using Sassy Shapes
   - SVG Fallback Mixin
-  - * Walkthrough: Recreating contrasted() *
+  - *Walkthrough: Recreating contrasted()*
 
-** Functions**
+**Functions**
   - Writing custom functions
   - Px to Rem Function
   - Property Getter
-  - * 06 - Color Function *
+  - *06 - Color Function*
   - Arglists
 
-** Theming **
+**Theming**
 
   - !default
   - @warn and @error
   - Theming with Maps
-  - * Walkthrough: Modular Animations*
+  - *Walkthrough: Modular Animations*
 
-  **Sass++**
+**Sass++**
     - File Organization
     - SassDoc
     - Advanced Example: Pixel Art
