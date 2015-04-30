@@ -1,0 +1,95 @@
+// timing functions
+$timing-functions: (
+  ease-in: cubic-bezier(.240, 0, .285, .995),
+  ease-out: cubic-bezier(.725, .005, .695, 1),
+  bounce-out: cubic-bezier(.520, -.270, .345, 1.005),
+  bounce-in: cubic-bezier(.805, .005, .410, 1.280),
+  bounce-in-out: cubic-bezier(.555, -.270, .370, 1.350),
+  snap-in: cubic-bezier(1, 0, .765, 1),
+  snap-out: cubic-bezier(.155, 0, 0, .995),
+  snap-in-out: cubic-bezier(.920, .010, .050, 1),
+);
+
+// included-animations list, starts blank
+$included-animations: ();
+
+//animation map
+$animations: (
+  'fade-in': (
+    0%: (
+      opacity: 0
+    ),
+    100%: (
+      opacity: 1
+    )
+  ),
+  'slide-in--left' : (
+    0%: (
+      transform: translateY(-100%)
+    ),
+    100%: (
+      transform: translateY(0)
+    )
+  ),
+  'slide-in--right' : (
+    0%: (
+      transform: translateY(100%)
+    ),
+    100%: (
+      transform: translateY(0)
+    )
+  )
+);
+
+//////////////////////////////
+// Keyframe Generator
+//
+// Creates a @keyframe animation for any animations
+// that are included for use within the application.
+//
+// Usage:
+//
+// @include keyframe-gen($animation-name)
+// @include keyframe-gen(fade-in)
+//////////////////////////////
+@mixin keyframe-gen($name) {
+  @if map-has-key($animations, $name) {
+    @keyframes #{$name} {
+      @each $position, $change in map-get($animations, $name) {
+        #{$position} {
+          @each $prop, $val in $change {
+            #{$prop}: #{$val};
+          }
+        }
+      }
+    }
+  }
+};
+
+//////////////////////////////
+// Animate
+//
+// Builds an animation with mixin keframe-gen during
+// first use, and gives the element an animation with
+// customizable properties.
+//
+// Usage:
+//
+// @include animate(fade-in);
+// @include animate(fade-in, 3s, $ibm-snapin);
+//////////////////////////////
+@mixin animate($name, $duration: 2s, $timing: ease-in) {
+  $exists: index($included-animations, '#{$name}');
+  @if not $exists {
+    @at-root {
+      @include keyframe-gen($name);
+    }
+    $included-animations: append($included-animations, '#{$name}') !global;
+  }
+
+  @if map-has-key($timing-functions, $timing) {
+    $timing: map-get($timing-functions, $timing);
+  }
+
+  animation: $name $duration $timing;
+};

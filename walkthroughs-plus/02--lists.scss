@@ -1,0 +1,46 @@
+////////////////////////////////////////
+//
+// PLAYING WITH LISTS
+//
+////////////////////////////////////////
+
+$my-list: "one", "cat", "dogs";
+
+.print-list{
+  &:after {
+    content: $my-list;
+  }
+}
+
+// appending to a list
+$new-list: append($my-list, "platypus");
+
+.print-list{
+    thing: $new-list;
+
+  &:hover {
+    $new-list: append($new-list, "omg-more");
+    thing: $new-list;
+  }
+}
+
+// can append within media query too
+
+.print-list {
+  thing: $new-list;
+
+  @media screen and (min-width: 300px) {
+    $new-list: append($my-list, "more");
+    &:after {
+      content: $new-list;
+    }
+  }
+}
+
+// joining lists
+
+$really-new-list: join($my-list, $new-list);
+
+.print-list {
+  thing: $really-new-list;
+}

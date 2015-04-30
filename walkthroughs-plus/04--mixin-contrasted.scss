@@ -1,0 +1,42 @@
+// This is like the contrasted() Compass mixin
+
+@mixin contrast-me($bg-color) {
+
+  @if lightness($bg-color) < 60% {
+    color: white;
+  } @else {
+    color: black;
+  }
+
+  background-color: $bg-color;
+}
+
+div {
+  padding: 2em;
+  text-align: center;
+  @include contrast-me(lightblue);
+}
+
+
+// BETTER: with customizations
+
+// create contrast settings map:
+$contrast-settings: (
+  'light-color': #f00,
+  'dark-color': #c69,
+  'light-ratio': 60%
+);
+
+//fix up the mixin:
+@mixin contrast-me($bg-color) {
+
+  @if lightness($bg-color) < map-get($contrast-settings, 'light-ratio') {
+    color: map-get($contrast-settings, 'dark-color');
+  } @else {
+    color: map-get($contrast-settings, 'light-color');
+  }
+
+  background-color: $bg-color;
+}
+
+// link: http://codepen.io/unax3/pen/oXgRYz

@@ -1,0 +1,86 @@
+ // original at http://codepen.io/jackarmley/pen/LohqG
+
+// map of icons we're reading through
+$icons:(
+  hamburger:(
+    (x x x x x)
+    (o o o o o)
+    (x x x x x)
+    (o o o o o)
+    (x x x x x)
+  ),
+  close:(
+    (x o o o x)
+    (o x o x o)
+    (o o x o o)
+    (o x o x o)
+    (x o o o x)
+  ),
+  diamond:(
+    (o o x o o)
+    (o x o x o)
+    (x o o o x)
+    (o x o x o)
+    (o o x o o)
+  )
+);
+
+$icon-size-var: 10px;
+
+@function read-matrix($matrix, $size: $icon-size-var, $color: hotpink) {
+  $l: length($matrix); // length of the entire
+  $shadows: ''; // shadows list section
+  $i: $l; // length of the line on a matrix
+
+  // read through the all the rows of the matrix
+  @for $i from 1 through $l {
+    $row: nth($matrix, $i); // this is a single row
+
+    @for $j from 1 through length($row){
+        $item: nth($row, $j); //itemize each element in that row
+
+        // if that item is an x, give it a drop shadow square w/background color (this is where we're building the shadows list)
+        @if $item == x{
+          $shadows:  $shadows + ($j*$size) + ' ' + ($i*$size) + ' ' + $color;
+        } @else{
+          $shadows:  $shadows + ($j*$size) + ' ' + ($i*$size) + ' ' + transparent;
+        }
+
+      // when you get to the end of the row, add a comma before the next block of drpo shadows
+      @if not ($j == length($row) and $i == $l) {
+        $shadows: $shadows + ',';
+      }
+    }
+  }
+
+  // return the entire shadow list here
+  @return unquote($shadows);
+}
+
+
+.icons{
+  margin: 3em auto;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+
+  li {
+    margin: 1em;
+    display: inline-block;
+    position: relative;
+
+  }
+
+  &--diamond {
+    &:after {
+      content: '';
+      position: absolute;
+      top: -$icon-size-var;
+      left: -$icon-size-var;
+      width: $icon-size-var;
+      height: $icon-size-var;
+      box-shadow: read-matrix(map-get($icons, diamond));
+    }
+  }
+}

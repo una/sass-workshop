@@ -1,0 +1,47 @@
+// PART 1
+//step one
+$white: #fff;
+$brand-color: #88d9e6;
+$dark: #374b4a;
+
+$brand-light: mix($brand-color, $white, 50%);
+$brand-dark: mix($brand-color, $dark, 80%);
+
+.white {
+  background-color: $white;
+}
+
+.dark {
+  background-color: $dark;
+}
+
+.brand-color {
+  background-color: $brand-color;
+}
+
+.brand-dark {
+  background-color: $brand-dark;
+}
+
+.brand-light {
+  background-color: $brand-light;
+}
+
+.colors li{
+  display: block;
+  height: 3em;
+  width: 10%;
+}
+
+// PART 2
+// add more mixes!
+$brand-secondary: #8b8Bae;
+$brand-secondary-blend: mix($brand-color, $brand-secondary, 40%);
+
+.brand-secondary {
+  background-color: $brand-secondary;
+}
+
+.brand-secondary-blend {
+  background-color: $brand-secondary-blend;
+}

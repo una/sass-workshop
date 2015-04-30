@@ -1,0 +1,44 @@
+$colors: (
+  'red': (
+    tint: #f66,
+    base: #c00,
+    shade: #a00
+  ),
+  'orange': (
+    tint: #f94,
+    base: #f50,
+    shade: #f12
+  ),
+  'yellow': (
+    tint: #ffa,
+    base: #ff0,
+    shade: #ff5
+  )
+);
+
+// step one
+@function color($color-name, $tone: base) {
+  @return map-get(map-get($colors, $color-name), $tone);
+}
+
+// sass
+h1 {
+  background: color('yellow');
+  color: color('red', 'shade');
+}
+
+// css output
+h1 {
+  background: #ff0;
+  color: #a00;
+}
+
+// then add warning
+@function color($color-name, $tone: base) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get(map-get($colors, $color-name), $tone);
+  } @else {
+    @warn "We couldn't find #{$color-name} in the $colors map! "
+            + "Please make sure it's defined. ";
+  }
+}
