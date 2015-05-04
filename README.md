@@ -90,8 +90,9 @@ The way this workshop will run is as follows:
   - *Walkthrough: Modular Animations*
 
 **Sass++**
+
     - File Organization
     - SassDoc
-    - Advanced Example: Pixel Art
+    - *Advanced Example: Pixel Art&
 
 **Final Challenge: Putting it All Together**
