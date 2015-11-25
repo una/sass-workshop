@@ -26,7 +26,7 @@ $brand-secondary: mix(invert($brand-color), $dark, 30%);
 }
 
 .light {
-  background-color: light;
+  background-color: $white;
 }
 
 .brand-secondary {
