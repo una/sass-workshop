@@ -1,4 +1,4 @@
-# Workshop: Customizing Your Stylesheets: An Advanced Sass Workshop
+# Workshop: Customizing Your Stylesheets
 
 So you’ve heard of Sass. In fact, you're probably using it. You write variables and use predefined mixins like a pro. But are you using Sass to its full potential?
 
